@@ -11,9 +11,10 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import firebase from "../config/fire";
-import { Link } from "react-router-dom";
+import firebase from "../../config/fire";
 import { Button } from "@material-ui/core";
+
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -107,25 +108,38 @@ export default function Dashboard(props) {
                 onClose={handleClose}
               >
                 <MenuItem>Welcome {firebase.getCurrentUsername()}</MenuItem>
+                <Link to="/dashboard">
+                  <MenuItem onClick={handleClose}>DashBoard</MenuItem>
+                </Link>
                 <Link to="/manage-profile">
                   <MenuItem onClick={handleClose}>Manage Profile</MenuItem>
-                </Link>
-                <Link to="/manage-account">
-                  <MenuItem onClick={handleClose}>My account</MenuItem>
                 </Link>
               </Menu>
             </div>
           )}
         </Toolbar>
       </AppBar>
+      <br></br>
       <div>
-        <h1 style={{ textAlign: "center" }}>Welcome to Technical Assessment</h1>
+        <p>Some Instruction Before You Take actual assesment</p>
+        <ul>
+          <li>Before you give actual assessment there is a survey test</li>
+          <li>
+            This Survey test is to get the basic information about yourself
+          </li>
+          <li>
+            With this type of information we can guide you for better future
+          </li>
+          <li>
+            This test is only the one time test when you first log on to the
+            application
+          </li>
+        </ul>
       </div>
-
       <div>
-        <Link to="/test/survey/survey-test">
+        <Link to="/test/survey/survey-test/test">
           <Button type="submit" color="primary" variant="contained">
-            Take Survey Test
+            Start
           </Button>
         </Link>
       </div>

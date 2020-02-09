@@ -13,7 +13,6 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import firebase from "../config/fire";
 import { Link } from "react-router-dom";
-import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -107,28 +106,17 @@ export default function Dashboard(props) {
                 onClose={handleClose}
               >
                 <MenuItem>Welcome {firebase.getCurrentUsername()}</MenuItem>
+                <Link to="/dashboard">
+                  <MenuItem onClick={handleClose}>DashBoard</MenuItem>
+                </Link>
                 <Link to="/manage-profile">
                   <MenuItem onClick={handleClose}>Manage Profile</MenuItem>
-                </Link>
-                <Link to="/manage-account">
-                  <MenuItem onClick={handleClose}>My account</MenuItem>
                 </Link>
               </Menu>
             </div>
           )}
         </Toolbar>
       </AppBar>
-      <div>
-        <h1 style={{ textAlign: "center" }}>Welcome to Technical Assessment</h1>
-      </div>
-
-      <div>
-        <Link to="/test/survey/survey-test">
-          <Button type="submit" color="primary" variant="contained">
-            Take Survey Test
-          </Button>
-        </Link>
-      </div>
     </div>
   );
   async function logout() {

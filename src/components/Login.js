@@ -12,6 +12,8 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import firebase from "../config/fire";
+import Facebook from "../container/SocialLogins/FaceBook";
+import Google from "../container/SocialLogins/Google";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -22,7 +24,8 @@ const useStyles = makeStyles(theme => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main
+    //backgroundColor: theme.palette.secondary.main,
+    backgroundColor: "#000000"
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -41,7 +44,11 @@ export default function Login(props) {
   const [password, setPassword] = useState("");
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container
+      component="main"
+      maxWidth="xs"
+      //style={{ backgroundColor: "#000000" }}
+    >
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -107,6 +114,12 @@ export default function Login(props) {
             </Grid>
           </Grid>
         </form>
+      </div>
+      <hr></hr>
+      <div>
+        <span>Or Login With </span>
+        <Facebook />
+        <Google />
       </div>
     </Container>
   );

@@ -8,6 +8,8 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import firebase from "../config/fire";
+import Facebook from "../container/SocialLogins/FaceBook";
+import Google from "../container/SocialLogins/Google";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -102,6 +104,8 @@ export default function SignUp(props) {
           </Button>
         </form>
       </div>
+      <Facebook />
+      <Google />
     </Container>
   );
 

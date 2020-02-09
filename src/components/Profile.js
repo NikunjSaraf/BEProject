@@ -13,7 +13,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import firebase from "../config/fire";
 import { Link } from "react-router-dom";
-import { Button } from "@material-ui/core";
+import { Container } from "@material-ui/core";
+import Form from "../container/Form";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,7 +28,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Dashboard(props) {
+export default function Profile(props) {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -107,8 +108,8 @@ export default function Dashboard(props) {
                 onClose={handleClose}
               >
                 <MenuItem>Welcome {firebase.getCurrentUsername()}</MenuItem>
-                <Link to="/manage-profile">
-                  <MenuItem onClick={handleClose}>Manage Profile</MenuItem>
+                <Link to="/dashboard">
+                  <MenuItem onClick={handleClose}>DashBoard</MenuItem>
                 </Link>
                 <Link to="/manage-account">
                   <MenuItem onClick={handleClose}>My account</MenuItem>
@@ -118,17 +119,9 @@ export default function Dashboard(props) {
           )}
         </Toolbar>
       </AppBar>
-      <div>
-        <h1 style={{ textAlign: "center" }}>Welcome to Technical Assessment</h1>
-      </div>
-
-      <div>
-        <Link to="/test/survey/survey-test">
-          <Button type="submit" color="primary" variant="contained">
-            Take Survey Test
-          </Button>
-        </Link>
-      </div>
+      <Container>
+        <Form />
+      </Container>
     </div>
   );
   async function logout() {
