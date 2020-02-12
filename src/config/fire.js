@@ -3,13 +3,13 @@ import "firebase/auth";
 import "firebase/firebase-firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCAJohm8upTGBo4FPp_2ITUtwPPoDOhBhM",
-  authDomain: "be-project-7cdae.firebaseapp.com",
-  databaseURL: "https://be-project-7cdae.firebaseio.com",
-  projectId: "be-project-7cdae",
-  storageBucket: "be-project-7cdae.appspot.com",
-  messagingSenderId: "415220481022",
-  appId: "1:415220481022:web:1212ce50e893d7006cdeaf"
+  apiKey: "****",
+  authDomain: "****",
+  databaseURL: "****",
+  projectId: "****",
+  storageBucket: "****",
+  messagingSenderId: "****",
+  appId: "****"
 };
 
 class Firebase {
