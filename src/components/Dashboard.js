@@ -6,15 +6,16 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import Switch from "@material-ui/core/Switch";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
+import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
+import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
+import AccountBoxOutlinedIcon from '@material-ui/icons/AccountBoxOutlined';
 import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import firebase from "../config/fire";
 import { Link } from "react-router-dom";
 import { Button } from "@material-ui/core";
-
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
@@ -29,13 +30,9 @@ const useStyles = makeStyles(theme => ({
 
 export default function Dashboard(props) {
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
+  const [auth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-
-  const handleChange = event => {
-    setAuth(event.target.checked);
-  };
 
   const handleMenu = event => {
     setAnchorEl(event.currentTarget);
@@ -55,7 +52,7 @@ export default function Dashboard(props) {
   return (
     <div className={classes.root}>
       <FormGroup>
-        <FormControlLabel
+        {/* <FormControlLabel
           control={
             <Switch
               checked={auth}
@@ -65,7 +62,7 @@ export default function Dashboard(props) {
             />
           }
           label={auth ? "Logout" : "Login"}
-        />
+        /> */}
       </FormGroup>
       <AppBar position="static">
         <Toolbar>
@@ -106,13 +103,53 @@ export default function Dashboard(props) {
                 open={open}
                 onClose={handleClose}
               >
+                 <IconButton
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <PersonOutlineOutlinedIcon />
                 <MenuItem>Welcome {firebase.getCurrentUsername()}</MenuItem>
+              </IconButton><br></br>
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <EditOutlinedIcon />
                 <Link to="/manage-profile">
                   <MenuItem onClick={handleClose}>Manage Profile</MenuItem>
                 </Link>
+              </IconButton><br></br>
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <AccountBoxOutlinedIcon />
                 <Link to="/manage-account">
                   <MenuItem onClick={handleClose}>My account</MenuItem>
                 </Link>
+              </IconButton><br></br>
+              
+               
+                <IconButton
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <ExitToAppIcon />
+                <MenuItem onClick={logout}>Logout</MenuItem>
+              </IconButton>
+             
               </Menu>
             </div>
           )}

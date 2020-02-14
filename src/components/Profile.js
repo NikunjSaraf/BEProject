@@ -6,16 +6,19 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import Switch from "@material-ui/core/Switch";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
+import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
+//import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
+import Container from '@material-ui/core/Container'
+import Form from '../container/Form';
+import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined';
+import AccountBoxOutlinedIcon from '@material-ui/icons/AccountBoxOutlined';
 import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import firebase from "../config/fire";
 import { Link } from "react-router-dom";
-import { Container } from "@material-ui/core";
-import Form from "../container/Form";
-
+//import { Button } from "@material-ui/core";
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
@@ -28,15 +31,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Profile(props) {
+export default function Dashboard(props) {
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
+  const [auth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-
-  const handleChange = event => {
-    setAuth(event.target.checked);
-  };
 
   const handleMenu = event => {
     setAnchorEl(event.currentTarget);
@@ -56,7 +55,7 @@ export default function Profile(props) {
   return (
     <div className={classes.root}>
       <FormGroup>
-        <FormControlLabel
+        {/* <FormControlLabel
           control={
             <Switch
               checked={auth}
@@ -66,7 +65,7 @@ export default function Profile(props) {
             />
           }
           label={auth ? "Logout" : "Login"}
-        />
+        /> */}
       </FormGroup>
       <AppBar position="static">
         <Toolbar>
@@ -107,13 +106,53 @@ export default function Profile(props) {
                 open={open}
                 onClose={handleClose}
               >
+                 <IconButton
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <PersonOutlineOutlinedIcon />
                 <MenuItem>Welcome {firebase.getCurrentUsername()}</MenuItem>
+              </IconButton><br></br>
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <DashboardOutlinedIcon />
                 <Link to="/dashboard">
-                  <MenuItem onClick={handleClose}>DashBoard</MenuItem>
+                  <MenuItem onClick={handleClose}>Dashboard</MenuItem>
                 </Link>
-                <Link to="/manage-account">
+              </IconButton><br></br>
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <AccountBoxOutlinedIcon />
+                <Link to="/manage-account" style={{textDecoration:"none"}}>
                   <MenuItem onClick={handleClose}>My account</MenuItem>
                 </Link>
+              </IconButton><br></br>
+              
+               
+                <IconButton
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <ExitToAppIcon />
+                <MenuItem onClick={logout}>Logout</MenuItem>
+              </IconButton>
+             
               </Menu>
             </div>
           )}

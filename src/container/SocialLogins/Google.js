@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import firebase from "../../config/fire";
+//import {Link} from "react-router-dom";
 
 export default class SignInGoogleBase extends Component {
   constructor(props) {
@@ -15,7 +16,8 @@ export default class SignInGoogleBase extends Component {
         this.setState({
           socialAuthUser: socialAuthUser.user.sendEmailVerification()
         });
-        this.props.history("/dashboard");
+        this.props.children('/dashboard');
+
       })
       .catch(error => {
         this.setState({ error });

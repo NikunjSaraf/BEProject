@@ -3,20 +3,20 @@ import "firebase/auth";
 import "firebase/firebase-firestore";
 
 const firebaseConfig = {
-  apiKey: "****",
-  authDomain: "****",
-  databaseURL: "****",
-  projectId: "****",
-  storageBucket: "****",
-  messagingSenderId: "****",
-  appId: "****"
+  apiKey: "AIzaSyCAJohm8upTGBo4FPp_2ITUtwPPoDOhBhM",
+  authDomain: "be-project-7cdae.firebaseapp.com",
+  databaseURL: "https://be-project-7cdae.firebaseio.com",
+  projectId: "be-project-7cdae",
+  storageBucket: "be-project-7cdae.appspot.com",
+  messagingSenderId: "415220481022",
+  appId: "1:415220481022:web:1212ce50e893d7006cdeaf"
 };
 
 class Firebase {
   constructor() {
     app.initializeApp(firebaseConfig);
     this.auth = app.auth();
-    this.db = app.firestore();
+    this.database = app.database;
 
     this.googleProvider = new app.auth.GoogleAuthProvider();
     this.facebookProvider = new app.auth.FacebookAuthProvider();
